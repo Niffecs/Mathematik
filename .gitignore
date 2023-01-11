@@ -1,3 +1,6 @@
+# No PDF in Git
+*.pdf
+
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
