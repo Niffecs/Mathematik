@@ -35,3 +35,4 @@ with open(FILE, "rb") as file:
 ftp.cwd("loader")
 with open(FILE2, "rb") as file:
     ftp.storbinary(f"STOR {FILE2}", file)
+ftp.close()
