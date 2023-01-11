@@ -41,12 +41,12 @@ else:
 
 # Test OS 
 
-print(f"HASH --> {hashlib.md5(FILE.encode('utf-8')).hexdigest()}")
+print(f"FILE --> {hashlib.md5(FILE.encode('utf-8')).hexdigest()}")
 print(f"HOST --> {hashlib.md5(HOST.encode('utf-8')).hexdigest()}")
 print(f"USER --> {hashlib.md5(USER.encode('utf-8')).hexdigest()}")
 print(f"PWD --> {hashlib.md5(PWD.encode('utf-8')).hexdigest()}")
 
-sys.exit(0)
+sys.exit(1)
 
 # FTP Gedoens
 ftp = ftplib.FTP(HOST, USER, PWD)
