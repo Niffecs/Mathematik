@@ -29,14 +29,22 @@ print(f"FILE 2 --> {FILE2}")
 
 # Test File exist
 if os.path.isfile(f"{FILE}"):
-    print(f"{FILE} exist")
+    print(f"FILE 1 --> {FILE} --> exist")
 else:
-    print(f"{FILE} not exist")
+    print(f"FILE 1 --> {FILE} -->  not exist")
 
 if os.path.isfile(f"{FILE2}"):
-    print(f"{FILE2} exist")
+    print(f"FILE 2 --> {FILE2} --> exist")
 else:
-    print(f"{FILE2} not exist")
+    print(f"FILE 2 --> {FILE2} --> not exist")
+
+
+# Test OS 
+
+print(f"HASH --> {hashlib.md5(FILE.encode('utf-8')).hexdigest()}")
+print(f"HOST --> {hashlib.md5(HOST.encode('utf-8')).hexdigest()}")
+print(f"USER --> {hashlib.md5(USER.encode('utf-8')).hexdigest()}")
+print(f"PWD --> {hashlib.md5(PWD.encode('utf-8')).hexdigest()}")
 
 sys.exit(0)
 
