@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
-      
+
       - name: System
         run: |
           echo "User: ${{ github.actor }}"
@@ -16,33 +16,15 @@ jobs:
           echo "OS: ${{ runner.os }}"
           echo "Branch: ${{ github.repository }}:${{ github.ref }}"
            
-      - name: Build Latex
-       # uses: xu-cheng/latex-action@v2
-        run: |
-          sudo apt update -y
-          sudo apt upgrade -y
-          sudo apt install -y texlive-base
-          sudo apt install -y texlive-latex-extra 
-          sudo apt install -y texlive-full
-          sudo apt install -y latexmk 
-          sudo apt install -y biber 
-          sudo apt install -y texlive-binaries
-          sudo apt update -y
-          sudo apt upgrade -y
-
-      - name: Compile Latex
-        run: |
-          cd ./Mathematik
-          pdflatex main.tex
-          makeindex main.idx -s StyleInd.ist
-          biber main.tex
-          pdflatex main.tex
-          pdflatex main.tex
+      - name: Compile Latex File
+        uses: xu-cheng/latex-action@v2
+        with:
+          working_directory: ./Mathematik
+          root_file: ./main.tex
 
       - name: Rename PDF
         run: |
           mv ./Mathematik/main.pdf Mathematik.pdf
-
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v3
         with:
@@ -64,6 +46,6 @@ jobs:
 
       - name: Git Clean
         run: git clean -fX
-      
+
       - name: Status
         run: echo "This job's status is ${{ job.status }}."
