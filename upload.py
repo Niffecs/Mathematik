@@ -23,6 +23,9 @@ hash = hashlib.md5(sys.argv[1][:-4].encode('utf-8')).hexdigest()
 shutil.copyfile(FILE, f"{hash}.pdf")
 FILE2 = f"{hash}.pdf"
 
+print(f"FILE 1 --> {FILE}")
+print(f"FILE 2 --> {FILE2}")
+
 
 # FTP Gedoens
 ftp = ftplib.FTP(HOST, USER, PWD)
