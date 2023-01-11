@@ -5,6 +5,7 @@ import ftplib
 import sys
 import hashlib
 import shutil
+import os.path
 
 # Load env
 FILE = sys.argv[1]
@@ -26,6 +27,18 @@ FILE2 = f"{hash}.pdf"
 print(f"FILE 1 --> {FILE}")
 print(f"FILE 2 --> {FILE2}")
 
+# Test File exist
+if os.path.isfile(f"{FILE}"):
+    print(f"{FILE} exist")
+else:
+    print(f"{FILE} not exist")
+
+if os.path.isfile(f"{FILE2}"):
+    print(f"{FILE2} exist")
+else:
+    print(f"{FILE2} not exist")
+
+sys.exit(0)
 
 # FTP Gedoens
 ftp = ftplib.FTP(HOST, USER, PWD)
@@ -35,4 +48,3 @@ with open(FILE, "rb") as file:
 ftp.cwd("loader")
 with open(FILE2, "rb") as file:
     ftp.storbinary(f"STOR {FILE2}", file)
-ftp.close()
